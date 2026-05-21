@@ -1,14 +1,29 @@
 import React from 'react';
 import { ThemeToggle } from './ThemeToggle';
+import logo from '@/assets/pawsome_logo.png'
+import Image from 'next/image';
+import Link from 'next/link';
+import { House, LayoutList } from '@gravity-ui/icons';
 
 const Navbar = () => {
     return (
         <div className='flex justify-between px-20 py-2 border-b border-b-slate-300 mb-10'>
-            <div>
-                <p>Navbar</p>
+            <Link href={'/'} className='flex items-center gap-1'>
+                <Image src={logo} width={30} height={30} alt='pawsome' className='rounded-full'></Image>
+                <h2 className='text-xl font-bold'>Pawsome</h2>
+            </Link>
+            <div className='flex items-center gap-4'>
+                <Link href={'/'} className='flex items-center gap-1 hover:text-[#FF4081]'>
+                    <House /> Home
+                </Link>
+                <Link href={'/all-pets'} className='flex items-center gap-1 hover:text-[#FF4081]'>
+                    <LayoutList /> All Pets
+                </Link>
             </div>
-            <div>
+            <div className='flex items-center gap-4'>
                 <ThemeToggle />
+                <Link href={'/login'} className='hover:text-[#FF4081]'>Login</Link>
+                <Link href={'/signup'} className='hover:text-[#FF4081]'>Signup</Link>
             </div>
         </div>
     );

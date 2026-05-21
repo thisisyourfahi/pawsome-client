@@ -1,11 +1,12 @@
+import Banner from "@/components/hompage/Banner";
+import WhyAdopt from "@/components/hompage/WhyAdopt";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <div>
-      <p className="text-4xl font-bold">
-        HomePage
-      </p>
+      <Banner />
+      <WhyAdopt />
     </div>
   );
 }
