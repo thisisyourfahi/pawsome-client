@@ -3,7 +3,7 @@ import { ThemeToggle } from './ThemeToggle';
 import logo from '@/assets/pawsome_logo.png'
 import Image from 'next/image';
 import Link from 'next/link';
-import { House, LayoutList } from '@gravity-ui/icons';
+import { CirclePlus, House, LayoutList } from '@gravity-ui/icons';
 
 const Navbar = () => {
     return (
@@ -12,12 +12,15 @@ const Navbar = () => {
                 <Image src={logo} width={30} height={30} alt='pawsome' className='rounded-full'></Image>
                 <h2 className='text-xl font-bold'>Pawsome</h2>
             </Link>
-            <div className='flex items-center gap-4'>
+            <div className='flex items-center md:gap-8'>
                 <Link href={'/'} className='flex items-center gap-1 hover:text-[#FF4081]'>
                     <House /> Home
                 </Link>
                 <Link href={'/all-pets'} className='flex items-center gap-1 hover:text-[#FF4081]'>
                     <LayoutList /> All Pets
+                </Link>
+                <Link href={'/add-pet'} className='flex items-center gap-1 hover:text-[#FF4081]'>
+                    <CirclePlus /> Add A Pet
                 </Link>
             </div>
             <div className='flex items-center gap-4'>
