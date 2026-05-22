@@ -14,6 +14,7 @@ const AddPetForm = () => {
         const response = await addPet(petInfo); 
         if (response.ok) {
             toast.success(`${petInfo.petName} has been added successfully`);
+            e.target.reset()
         }
     }
     return (

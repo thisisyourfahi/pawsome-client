@@ -15,3 +15,9 @@ export const addPet = async (petInfo) => {
         return {ok: false}
     }
 } 
+
+export const getAllPets = async () => {
+    const data = await fetch(`${PUBLIC_URL}/all-pets`);
+    const res = await data.json();
+    return res;
+}

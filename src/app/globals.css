@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "@heroui/styles"; 
 @plugin "daisyui";
+@import 'animate.css';
 :root {
   /* Override any color variable */
   --accent: oklch(0.7 0.25 260);
