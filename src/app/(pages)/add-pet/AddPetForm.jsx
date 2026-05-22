@@ -1,13 +1,20 @@
 'use client'
+import { addPet } from '@/api/petServices';
 import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select, Card } from '@heroui/react';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const AddPetForm = () => {
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
         const formData = new FormData(e.target);
         const petInfo = Object.fromEntries(formData.entries());
-        console.log('pet info:', petInfo);
+
+        // sending request to server
+        const response = await addPet(petInfo); 
+        if (response.ok) {
+            toast.success(`${petInfo.petName} has been added successfully`);
+        }
     }
     return (
         <div className="space-y-4">

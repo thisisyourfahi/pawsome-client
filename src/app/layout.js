@@ -3,6 +3,7 @@ import "./globals.css";
 import { NextThemeProvider } from "@/providers/NextThemeProviders";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import { ToastContainer } from "react-toastify";
 
 const marcellus = Marcellus({
   weight: '400',
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
             {children}
           </main>
           <Footer />
+          <ToastContainer />
         </NextThemeProvider>
       </body>
     </html>
