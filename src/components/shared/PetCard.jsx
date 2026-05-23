@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const PetCard = ({ pet }) => {
-    const { petName, image, adoption, fee, species, location } = pet
+    const { petName, image, adoption, fee, species, location, _id } = pet
     return (
         <div className='animate__animated animate__fadeIn rounded-sm border border-[#810B38] hover:shadow-[0_0_25px_5px_rgba(129,11,56,0.4)] transition-shadow p-2 space-y-4'>
             <div className='relative aspect-square'>
@@ -25,7 +25,7 @@ const PetCard = ({ pet }) => {
                 </div>
 
                 <div className='flex justify-between items-center'>
-                    <Link href={'#'}>
+                    <Link href={`/all-pets/${_id}`}>
                         <Button variant='outline' size='sm' className='rounded-sm border-[#810B38] text-[#810B38] hover:bg-linear-to-r hover:from-[#ff0062] hover:to-[#A8124A] hover:text-white transition-all duration-200'>View Details</Button>
                     </Link>
                     <Link href={'#'}>

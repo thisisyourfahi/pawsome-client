@@ -21,3 +21,9 @@ export const getAllPets = async () => {
     const res = await data.json();
     return res;
 }
+
+export const getASinglePet = async (id) => {
+    const data = await fetch(`${PUBLIC_URL}/all-pets/${id}`);
+    const res = await data.json();
+    return res;
+}

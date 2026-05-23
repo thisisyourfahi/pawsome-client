@@ -4,7 +4,6 @@ import React from 'react';
 
 const AllPetsPage = async () => {
     const allPets = await getAllPets();
-    console.log('all pets:', allPets)
     return (
         <div>
             <div>
