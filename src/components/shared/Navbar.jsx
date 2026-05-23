@@ -4,8 +4,16 @@ import logo from '@/assets/pawsome_logo.png'
 import Image from 'next/image';
 import Link from 'next/link';
 import { CirclePlus, House, LayoutList } from '@gravity-ui/icons';
+import UserDetailsNavTop from './UserDetailsNavTop';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
-const Navbar = () => {
+const Navbar = async () => {
+    const session = await auth.api.getSession({
+        headers: await headers()
+    })
+    const user = session?.user;
+
     return (
         <div className='flex justify-between px-20 py-2 border-b border-b-slate-300 mb-10'>
             <Link href={'/'} className='flex items-center gap-1'>
@@ -25,8 +33,16 @@ const Navbar = () => {
             </div>
             <div className='flex items-center gap-4'>
                 <ThemeToggle />
-                <Link href={'/login'} className='hover:text-[#FF4081]'>Login</Link>
-                <Link href={'/signup'} className='hover:text-[#FF4081]'>Signup</Link>
+
+                {
+                    user ? <>
+                        <UserDetailsNavTop user={user} />
+                    </> : <>
+                        <Link href={'/login'} className='hover:text-[#FF4081]'>Login</Link>
+                        <Link href={'/signup'} className='hover:text-[#FF4081]'>Signup</Link>
+                    </>
+                }
+
             </div>
         </div>
     );

@@ -9,8 +9,8 @@
 }
 
 /* Custom button style */
-.btn-purple-gradient {
+/* .btn-purple-gradient {
     @apply border-[#810B38] text-[#810B38] 
            hover:bg-gradient-to-r hover:from-[#ff0062] hover:to-[#A8124A] 
            hover:text-white transition-all duration-200;
-}
+} */
