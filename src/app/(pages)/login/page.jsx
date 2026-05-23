@@ -1,14 +1,28 @@
 'use client'
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
         const formData = new FormData(e.target);
         const userInfo = Object.fromEntries(formData.entries());
+        const { email, password } = userInfo;
+
+        const {data, error} = await authClient.signIn.email({
+            email, password
+        })
+        if (data) {
+            toast.success('Welcome to Pawsome!');
+            redirect('/')
+        } else {
+            toast.error(error?.message);
+        }
     }
     return (
         <div className="space-y-4">
