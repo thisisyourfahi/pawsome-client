@@ -10,7 +10,7 @@ const PetListCard = ({ pet }) => {
     const { _id, petName, species, breed, age, image, gender, vaccination} = pet
 
     return (
-        <div className='flex justify-between items-center p-4 rounded-sm border border-[#810b38]'>
+        <div className='animate__animated animate__bounceInUp flex justify-between items-center p-4 rounded-sm border border-[#810b38]'>
             <div className='flex items-center gap-4'>
                 <div className='relative aspect-square w-40'>
                     <Image src={image} fill className='object-cover rounded-sm overflow-hidden' alt={petName}></Image>

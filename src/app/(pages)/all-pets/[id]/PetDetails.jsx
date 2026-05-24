@@ -7,7 +7,7 @@ const PetDetails = ({ pet }) => {
     const { _id, petName, species, breed, age, health, image, gender, adoption, vaccination, location, fee, description } = pet
 
     return (
-        <div className='max-w-150 mx-auto p-4 space-y-4 border border-[#810b38]'>
+        <div className='max-w-200 mx-auto p-4 space-y-4 border border-[#810b38]'>
             {/* image */}
             <div className='relative aspect-square'>
                 <Image src={image} fill alt={petName} className='object-cover rounded-sm' />
