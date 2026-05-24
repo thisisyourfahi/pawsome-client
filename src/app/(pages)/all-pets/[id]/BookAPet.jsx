@@ -1,9 +1,8 @@
 'use client'
-import { addAdoption } from '@/api/petServices';
+import { addAdoption } from '@/api/adoptionServices';
 import { authClient } from '@/lib/auth-client';
-import { Check, HandPointUp } from '@gravity-ui/icons';
+import { Check } from '@gravity-ui/icons';
 import { Input, Label, TextField, Select, ListBox, Button, FieldError } from '@heroui/react';
-import { Calendar, DateField, DatePicker } from "@heroui/react";
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 
@@ -12,8 +11,12 @@ const BookAPet = ({ pet }) => {
     const { _id, petName, breed, age, gender, vaccination, location, fee, ownderId } = pet;
 
     const { data, isPending } = authClient.useSession();
-    const user = data?.user;
-
+    let user = {};
+    if (!isPending) {
+        user = data?.user;
+    }
+    // const user = data?.user;
+    
     const onSubmit = async (e) => {
         e.preventDefault();
         const date = e.target.pickupDate.value;
