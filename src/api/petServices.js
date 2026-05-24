@@ -36,13 +36,26 @@ export const getASinglePet = async (id) => {
 
 // update a pet
 export const updateAPet = async (petInfo, id) => {
-    console.log('user requested to update pet.', petInfo)
     const data = await fetch(`${PUBLIC_URL}/update-pet/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(petInfo)
+    })
+    const res = await data.json();
+    if (res.acknowledged) {
+        return ({ok: true})
+    } else {
+        return ({ok: false})
+    }
+}
+
+// delete a pet
+export const deleteAPet = async (petId) => {
+    console.log('user want to delete:', petId)
+    const data = await fetch(`${PUBLIC_URL}/delete/${petId}`, {
+        method: 'DELETE'
     })
     const res = await data.json();
     if (res.acknowledged) {

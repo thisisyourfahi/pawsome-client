@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import UpdateModal from './UpdateModal';
+import DeleteModal from './DeleteModal';
 
 const PetListCard = ({ pet }) => {
     const { _id, petName, species, breed, age, image, gender, vaccination} = pet
@@ -38,13 +39,7 @@ const PetListCard = ({ pet }) => {
                 
                 <UpdateModal pet={pet} />
 
-                <Button
-                    variant='outline'
-                    size='sm'
-                    className='rounded-sm border-[#810B38] text-[#810B38] hover:bg-linear-to-r hover:from-[#ff0062] hover:to-[#A8124A] hover:text-white transition-all duration-200'
-                > <TrashBin />
-                    Delete
-                </Button>
+                <DeleteModal pet={pet} />
 
             </div>
         </div>
