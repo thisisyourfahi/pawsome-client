@@ -10,14 +10,20 @@ export const addPet = async (petInfo) => {
     })
     const res = await data.json();
     if (res.acknowledged) {
-        return {ok: true}
+        return { ok: true }
     } else {
-        return {ok: false}
+        return { ok: false }
     }
-} 
+}
 
 export const getAllPets = async () => {
     const data = await fetch(`${PUBLIC_URL}/all-pets`);
+    const res = await data.json();
+    return res;
+}
+
+export const getAllPetsOfAuser = async (userId) => {
+    const data = await fetch(`${PUBLIC_URL}/dashboard/my-listings/${userId}`)
     const res = await data.json();
     return res;
 }
@@ -26,4 +32,22 @@ export const getASinglePet = async (id) => {
     const data = await fetch(`${PUBLIC_URL}/all-pets/${id}`);
     const res = await data.json();
     return res;
+}
+
+// update a pet
+export const updateAPet = async (petInfo, id) => {
+    console.log('user requested to update pet.', petInfo)
+    const data = await fetch(`${PUBLIC_URL}/update-pet/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(petInfo)
+    })
+    const res = await data.json();
+    if (res.acknowledged) {
+        return ({ok: true})
+    } else {
+        return ({ok: false})
+    }
 }

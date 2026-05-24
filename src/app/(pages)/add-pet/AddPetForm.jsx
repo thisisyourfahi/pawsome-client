@@ -1,14 +1,19 @@
 'use client'
 import { addPet } from '@/api/petServices';
+import { authClient } from '@/lib/auth-client';
 import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select, Card } from '@heroui/react';
 import React from 'react';
 import { toast } from 'react-toastify';
 
 const AddPetForm = () => {
+    const {data, isPending} = authClient.useSession();
+    const user = data?.user;
+
     const onSubmit = async (e) => {
         e.preventDefault()
         const formData = new FormData(e.target);
         const petInfo = Object.fromEntries(formData.entries());
+        petInfo.ownderId = user?.id;
 
         // sending request to server
         const response = await addPet(petInfo); 

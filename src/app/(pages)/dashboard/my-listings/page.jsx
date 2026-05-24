@@ -1,9 +1,21 @@
+import { getAllPetsOfAuser } from '@/api/petServices';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 import React from 'react';
+import PetListCard from './PetListCard';
 
-const MyListings = () => {
+const MyListings = async () => {
+    const session = await auth.api.getSession({
+        headers: await headers()
+    })
+    const user = session?.user;
+    const allPetsOfAUser = await getAllPetsOfAuser(user.id)
+
     return (
-        <div className='bg-gray-200 p-4 min-h-screen rounded-sm'>
-            <p>See all of your listings</p>
+        <div className='bg-gray-200 p-4 min-h-screen rounded-sm space-y-4'>
+            {
+                allPetsOfAUser.map(pet => <PetListCard key={pet._id} pet={pet} />)
+            }
         </div>
     );
 };

@@ -9,8 +9,7 @@ const DashboardPage = async () => {
         headers: await headers()
     })
     const user = session?.user;
-    console.log('dashboard:', user);
-
+    
     return (
         <div className='bg-gray-200 p-4 min-h-screen rounded-sm flex justify-center items-center'>
             <Card className="animate__bounceInUp animate__animated shadow-none rounded-sm bg-gray-300 mx-auto md:w-125 py-10">

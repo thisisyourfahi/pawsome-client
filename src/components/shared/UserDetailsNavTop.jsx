@@ -13,6 +13,7 @@ const UserDetailsNavTop = ({user}) => {
         const res = await authClient.signOut();
         if (res?.data?.success) {
             toast.warning('Logged out successfully!');
+            router.push('/');
             router.refresh();
         }
     }
