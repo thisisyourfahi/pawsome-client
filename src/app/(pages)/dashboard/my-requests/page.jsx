@@ -11,7 +11,6 @@ const MyRequests = async () => {
     })
     const user = session?.user;
     const adoptions = await getAllRequestsOfAUser(user.id)
-    console.log('users own adoption requests:', adoptions);
 
     return (
         <div className='bg-gray-200 p-4 min-h-screen rounded-sm'>
