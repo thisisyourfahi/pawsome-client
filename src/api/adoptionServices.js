@@ -30,6 +30,19 @@ export const acceptAdoptionRequest = async (adoptionId) => {
     }
 }
 
+// reject adoption request
+export const rejectAdoptionRequest = async (adoptionId) => {
+    const data = await fetch(`${PUBLIC_URL}/dashboard/adoption-requests/reject/${adoptionId}`, {
+        method: 'PATCH',
+    })
+    const res = await data.json();
+    if (res.acknowledged) {
+        return ({ ok: true })
+    } else {
+        return ({ ok: false })
+    }
+}
+
 // get all adoption requests of a users list
 export const getAddoptionRequestOfYourListings = async (userId) => {
     const data = await fetch(`${PUBLIC_URL}/dashboard/adoption-requests/${userId}`);

@@ -1,5 +1,5 @@
 'use client'
-import { deleteAnAdoption } from "@/api/adoptionServices";
+import { deleteAnAdoption, rejectAdoptionRequest } from "@/api/adoptionServices";
 import { Ban, TrashBin } from "@gravity-ui/icons";
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
@@ -8,16 +8,15 @@ const RejectRequestModal = ({pet, adoptionId}) => {
     const { petName } = pet;
     const router = useRouter();
 
-    const handleDelete = async (e) => {
-        console.log('rejected')
-        // const response = await deleteAnAdoption(adoptionId);
-        // if (response.ok) {
-        //     toast.success('Adoption request has been deleted.');
-        //     router.refresh()
-        // } else {
-        //     toast.error('Something went wrong. Please refresh and try again.')
-        //     router.refresh()
-        // }
+    const handleReject = async (e) => {
+        const response = await rejectAdoptionRequest(adoptionId);
+        if (response.ok) {
+            toast.success('Adoption request has been rejected.');
+            router.refresh();
+        } else {
+            toast.error('Something went wrong. Please refresh and try again.');
+            router.refresh();
+        }
     }
 
     return (
@@ -45,7 +44,7 @@ const RejectRequestModal = ({pet, adoptionId}) => {
                             <Button className={'rounded-sm'} slot="close" variant="tertiary">
                                 Cancel
                             </Button>
-                            <Button onClick={handleDelete} className={'rounded-sm'} slot="close" variant="danger">
+                            <Button onClick={handleReject} className={'rounded-sm'} slot="close" variant="danger">
                                 Reject
                             </Button>
                         </AlertDialog.Footer>
