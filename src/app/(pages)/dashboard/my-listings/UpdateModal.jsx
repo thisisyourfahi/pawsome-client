@@ -1,24 +1,31 @@
 'use client'
 import { updateAPet } from "@/api/petServices";
+import { authClient } from "@/lib/auth-client";
 import { HandPointUp, Rocket } from "@gravity-ui/icons";
 import { Button, Card, Input, Label, ListBox, Modal, TextArea, TextField, Select } from "@heroui/react";
-import { redirect, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 const UpdateModal = ({ pet }) => {
     const { _id, petName, species, breed, age, health, image, gender, adoption, vaccination, location, fee, description } = pet;
-    
+
     const router = useRouter();
 
     const onSubmit = async (e) => {
         e.preventDefault();
+
+        const { data: tokenData } = await authClient.token();
+
         const formData = new FormData(e.target);
         const petInfo = Object.fromEntries(formData.entries());
-        const res = await updateAPet(petInfo, _id)
+
+        const res = await updateAPet(petInfo, _id, tokenData?.token);
+
         if (res.ok) {
             toast.success('Pet information updated!');
-            router.push('/dashboard')
+            router.push('/dashboard');
+        } else {
+            toast.error('Something Went Wrong.');
         }
     }
 

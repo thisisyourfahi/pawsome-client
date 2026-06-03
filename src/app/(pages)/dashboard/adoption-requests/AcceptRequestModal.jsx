@@ -5,12 +5,12 @@ import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
-const AcceptRequestModal = ({pet, adoptionId}) => {
+const AcceptRequestModal = ({pet, adoptionInfo}) => {
     const { petName } = pet;
     const router = useRouter();
 
     const handleAccept = async (e) => {
-        const response = await acceptAdoptionRequest(adoptionId);
+        const response = await acceptAdoptionRequest(adoptionInfo._id, adoptionInfo.petId);
         if (response.ok) {
             toast.success('Adoption request has been accepted.');
             router.refresh()

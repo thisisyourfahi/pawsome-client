@@ -7,8 +7,12 @@ import PetOwnerAlert from './PetOwnerAlert';
 import BookAPet from './BookAPet';
 
 const PetDetailsPage = async ({params}) => {
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+    
     const {id} = await params;
-    const pet = await getASinglePet(id);
+    const pet = await getASinglePet(id, token);
 
     const session = await auth.api.getSession({
         headers: await headers()

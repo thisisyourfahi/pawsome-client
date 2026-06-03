@@ -4,9 +4,14 @@ import AcceptRequestModal from './AcceptRequestModal';
 import RejectRequestModal from './RejectRequestModal';
 import { Button } from '@heroui/react';
 import { Ban, Check } from '@gravity-ui/icons';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
 const AdoptionRequestCard = async ({ adoptionInfo }) => {
-    const pet = await getASinglePet(adoptionInfo.petId);
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+    const pet = await getASinglePet(adoptionInfo.petId, token);
     const requesPending = adoptionInfo.status === 'Pending'
 
     return (
@@ -19,7 +24,7 @@ const AdoptionRequestCard = async ({ adoptionInfo }) => {
                     <div className='flex items-center gap-2'>
                         {
                             requesPending ? <>
-                                <AcceptRequestModal pet={pet} adoptionId={adoptionInfo._id} />
+                                <AcceptRequestModal pet={pet} adoptionInfo={adoptionInfo} />
                                 <RejectRequestModal pet={pet} adoptionId={adoptionInfo._id} />
                             </> : <>
                                 <Button isDisabled

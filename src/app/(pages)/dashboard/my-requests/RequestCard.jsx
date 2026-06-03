@@ -1,9 +1,14 @@
 import { getASinglePet } from '@/api/petServices';
 import React from 'react';
 import RequestDeleteModal from './RequestDeleteModal';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
 const RequestCard = async ({ adoptionInfo }) => {
-    const pet = await getASinglePet(adoptionInfo.petId);
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+    const pet = await getASinglePet(adoptionInfo.petId, token);
 
     return (
         <div>

@@ -20,6 +20,8 @@ const AddPetForm = () => {
         if (response.ok) {
             toast.success(`${petInfo.petName} has been added successfully`);
             e.target.reset()
+        } else {
+            console.log('AddPetForm', response);
         }
     }
     return (

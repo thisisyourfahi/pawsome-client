@@ -5,6 +5,7 @@ import React from 'react';
 
 const PetDetails = ({ pet }) => {
     const { _id, petName, species, breed, age, health, image, gender, adoption, vaccination, location, fee, description } = pet
+    console.log('adoption:', adoption);
 
     return (
         <div className='max-w-200 mx-auto p-4 space-y-4 border border-[#810b38]'>

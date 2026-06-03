@@ -18,8 +18,8 @@ export const addAdoption = async (adoptionInfo) => {
 }
 
 // accept adoption request 
-export const acceptAdoptionRequest = async (adoptionId) => {
-    const data = await fetch(`${PUBLIC_URL}/dashboard/adoption-requests/accept/${adoptionId}`, {
+export const acceptAdoptionRequest = async (adoptionId, petId) => {
+    const data = await fetch(`${PUBLIC_URL}/dashboard/adoption-requests/accept/${adoptionId}/${petId}`, {
         method: 'PATCH',
     });
     const res = await data.json();
