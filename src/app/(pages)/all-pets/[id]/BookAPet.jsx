@@ -15,7 +15,6 @@ const BookAPet = ({ pet, owner }) => {
     if (!isPending) {
         user = data?.user;
     }
-    // const user = data?.user;
 
     const onSubmit = async (e) => {
         e.preventDefault();

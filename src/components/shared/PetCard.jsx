@@ -10,6 +10,13 @@ const PetCard = ({ pet }) => {
         <div className='animate__animated animate__fadeIn rounded-sm border border-[#810B38] hover:shadow-[0_0_25px_5px_rgba(129,11,56,0.4)] transition-shadow p-2 space-y-4'>
             <div className='relative aspect-square'>
                 <Image src={image} fill className='object-cover rounded-sm overflow-hidden' alt={petName}></Image>
+                {
+                    adoption === 'Available' ? <>
+                        <div className="absolute top-2 right-2 badge badge-success rounded-sm font-bold">Available</div>
+                    </> : <>
+                        <div className="absolute top-2 right-2 badge badge-error rounded-sm font-bold">Adopted</div>
+                    </>
+                }
             </div>
             <div className='space-y-1'>
                 <div className='flex items-center gap-1'>

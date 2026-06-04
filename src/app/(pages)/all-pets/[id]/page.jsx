@@ -6,14 +6,18 @@ import { headers } from 'next/headers';
 import PetOwnerAlert from './PetOwnerAlert';
 import BookAPet from './BookAPet';
 import { getAUser } from '@/api/userServices';
+import AlreadyAdoptedAlert from './AlreadyAdoptedAlert';
 
-const PetDetailsPage = async ({params}) => {
-    const {token} = await auth.api.getToken({
+const PetDetailsPage = async ({ params }) => {
+    const { token } = await auth.api.getToken({
         headers: await headers()
     })
-    
-    const {id} = await params;
+
+    const { id } = await params;
     const pet = await getASinglePet(id, token);
+
+    const { adoption } = await pet;
+    const availableForAdoption = adoption === 'Available';
 
     const owner = await getAUser(pet.ownderId)
 
@@ -32,7 +36,12 @@ const PetDetailsPage = async ({params}) => {
                 if user's pet -> show an warning
             */}
             {
-                userIsTheOwner ? <PetOwnerAlert /> : <BookAPet owner={owner} pet={pet} />
+                userIsTheOwner ? <PetOwnerAlert /> :
+                    availableForAdoption ? <>
+                        <BookAPet owner={owner} pet={pet} />
+                    </> : <>
+                        <AlreadyAdoptedAlert />
+                    </>
             }
         </div>
     );
