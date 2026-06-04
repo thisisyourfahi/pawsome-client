@@ -5,10 +5,9 @@ import React from 'react';
 const AllPetsPage = async () => {
     const allPets = await getAllPets();
     return (
-        <div>
-            <div>
-                <h2 className='text-2xl font-bold'>All Pets</h2>
-            </div>
+        <div className='space-y-4'>
+            <h2 className='text-2xl font-bold'>All Pets</h2>
+
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
                 {
                     allPets.map(pet => <PetCard key={pet._id} pet={pet} />)
