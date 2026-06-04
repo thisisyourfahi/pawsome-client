@@ -7,13 +7,20 @@ import UpdateModal from './UpdateModal';
 import DeleteModal from './DeleteModal';
 
 const PetListCard = ({ pet }) => {
-    const { _id, petName, species, breed, age, image, gender, vaccination} = pet
+    const { _id, petName, species, breed, age, image, gender, adoption, vaccination } = pet
 
     return (
         <div className='animate__animated animate__bounceInUp flex justify-between items-center p-4 rounded-sm border border-[#810b38]'>
             <div className='flex items-center gap-4'>
                 <div className='relative aspect-square w-40'>
                     <Image src={image} fill className='object-cover rounded-sm overflow-hidden' alt={petName}></Image>
+                    {
+                        adoption === 'Available' ? <>
+                            <div className="absolute top-2 right-2 badge badge-success rounded-sm font-bold">Available</div>
+                        </> : <>
+                            <div className="absolute top-2 right-2 badge badge-error rounded-sm font-bold">Adopted</div>
+                        </>
+                    }
                 </div>
                 <div className='space-y-2'>
                     <div className='flex items-center gap-4'>
@@ -36,7 +43,7 @@ const PetListCard = ({ pet }) => {
                 <Link href={`/all-pets/${_id}`}>
                     <Button variant='outline' size='sm' className='rounded-sm border-[#810B38] text-[#810B38] hover:bg-linear-to-r hover:from-[#ff0062] hover:to-[#A8124A] hover:text-white transition-all duration-200'> <CircleInfo /> Details</Button>
                 </Link>
-                
+
                 <UpdateModal pet={pet} />
 
                 <DeleteModal pet={pet} />

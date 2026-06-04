@@ -4,7 +4,7 @@ import dental from '@/assets/dental_hygiene.png'
 import parasite from '@/assets/parasite.png'
 import nutrition from '@/assets/nutrition.png'
 
-const PetCarTips = () => {
+const PetCareTips = () => {
     return (
         <div className='max-w-4xl mx-auto space-y-4'>
             <p className='text-3xl font-bold'>Pet Care Tips</p>
@@ -37,4 +37,4 @@ const PetCarTips = () => {
     );
 };
 
-export default PetCarTips;
+export default PetCareTips;

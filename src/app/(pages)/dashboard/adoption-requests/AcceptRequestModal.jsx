@@ -1,4 +1,5 @@
 'use client'
+import { RefreshPath } from "@/api/actions";
 import { acceptAdoptionRequest, deleteAnAdoption } from "@/api/adoptionServices";
 import { Check } from "@gravity-ui/icons";
 import { AlertDialog, Button } from "@heroui/react";
@@ -13,6 +14,7 @@ const AcceptRequestModal = ({pet, adoptionInfo}) => {
         const response = await acceptAdoptionRequest(adoptionInfo._id, adoptionInfo.petId);
         if (response.ok) {
             toast.success('Adoption request has been accepted.');
+            RefreshPath('/dashboard/adoption-requests');
             router.refresh()
         } else {
             toast.error('Something went wrong. Please refresh and try again.')

@@ -4,6 +4,7 @@ import { headers } from 'next/headers';
 import React from 'react';
 import PetListCard from './PetListCard';
 import EmptyList from './EmptyList';
+import Stats from './Stats';
 
 const MyListings = async () => {
     const session = await auth.api.getSession({
@@ -14,6 +15,7 @@ const MyListings = async () => {
 
     return (
         <div className='bg-gray-200 p-4 min-h-screen rounded-sm space-y-4'>
+            <Stats />
             {
                 allPetsOfAUser.length > 0 ? <>
                     {

@@ -1,9 +1,8 @@
 import { getAllPets } from "@/api/petServices";
 import Banner from "@/components/hompage/Banner";
 import FeaturedPets from "@/components/hompage/FeaturedPets";
-import PetCarTips from "@/components/hompage/PetCarTips";
+import PetCareTips from "@/components/hompage/PetCareTips";
 import WhyAdopt from "@/components/hompage/WhyAdopt";
-import Image from "next/image";
 
 export default async function Home() {
   const allPets = await getAllPets();
@@ -13,7 +12,7 @@ export default async function Home() {
       <Banner />
       <FeaturedPets pets={pets}/>
       <WhyAdopt />
-      <PetCarTips />
+      <PetCareTips />
     </div>
   );
 }

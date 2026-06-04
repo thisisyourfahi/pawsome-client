@@ -27,7 +27,7 @@ const RequestDeleteModal = ({pet, adoptionId}) => {
                 size='sm'
                 className='rounded-sm border-[#810B38] text-[#810B38] hover:bg-linear-to-r hover:from-[#ff0062] hover:to-[#A8124A] hover:text-white transition-all duration-200'
             > <TrashBin />
-                Delete
+                Cancel
             </Button>
             <AlertDialog.Backdrop>
                 <AlertDialog.Container>

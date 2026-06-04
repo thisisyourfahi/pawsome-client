@@ -108,6 +108,10 @@ const BookAPet = ({ pet, owner }) => {
                         <Input placeholder='Adoption Fee' className={'rounded-sm'}></Input>
                     </TextField>
                 </div>
+                <TextField isDisabled defaultValue={owner.name} name='ownerName' type='text'>
+                    <Label>Owner Name:</Label>
+                    <Input className={'rounded-sm'}></Input>
+                </TextField>
                 <TextField isDisabled defaultValue={owner.email} name='owner' type='text'>
                     <Label>Owner Email:</Label>
                     <Input className={'rounded-sm'}></Input>
