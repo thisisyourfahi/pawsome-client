@@ -35,7 +35,7 @@ const PetCard = ({ pet }) => {
                     <Link href={`/all-pets/${_id}`}>
                         <Button variant='outline' size='sm' className='rounded-sm border-[#810B38] text-[#810B38] hover:bg-linear-to-r hover:from-[#ff0062] hover:to-[#A8124A] hover:text-white transition-all duration-200'>View Details</Button>
                     </Link>
-                    <Link href={'#'}>
+                    <Link href={`/all-pets/${_id}`}>
                         <Button
                             variant='outline'
                             size='sm'
