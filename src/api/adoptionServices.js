@@ -1,4 +1,4 @@
-const PUBLIC_URL = process.env.PUBLIC_URL || 'http://localhost:5555'
+const PUBLIC_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:5555'
 
 // add adoption info
 export const addAdoption = async (adoptionInfo) => {

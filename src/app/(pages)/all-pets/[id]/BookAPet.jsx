@@ -6,7 +6,7 @@ import { Input, Label, TextField, Select, ListBox, Button, FieldError } from '@h
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 
-const BookAPet = ({ pet }) => {
+const BookAPet = ({ pet, owner }) => {
     const router = useRouter();
     const { _id, petName, breed, age, gender, vaccination, location, fee, ownderId } = pet;
 
@@ -16,7 +16,7 @@ const BookAPet = ({ pet }) => {
         user = data?.user;
     }
     // const user = data?.user;
-    
+
     const onSubmit = async (e) => {
         e.preventDefault();
         const date = e.target.pickupDate.value;
@@ -25,7 +25,7 @@ const BookAPet = ({ pet }) => {
             applicantId: user.id,
             ownerId: ownderId,
             petId: _id,
-            pickupDate: date, 
+            pickupDate: date,
             status: 'Pending'
         }
         const res = await addAdoption(adoptionInfo);
@@ -109,6 +109,10 @@ const BookAPet = ({ pet }) => {
                         <Input placeholder='Adoption Fee' className={'rounded-sm'}></Input>
                     </TextField>
                 </div>
+                <TextField isDisabled defaultValue={owner.email} name='owner' type='text'>
+                    <Label>Owner Email:</Label>
+                    <Input className={'rounded-sm'}></Input>
+                </TextField>
 
                 <div>
                     <TextField name="pickupDate" type="date" isRequired>

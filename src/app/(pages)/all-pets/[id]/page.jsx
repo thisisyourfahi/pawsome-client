@@ -5,6 +5,7 @@ import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import PetOwnerAlert from './PetOwnerAlert';
 import BookAPet from './BookAPet';
+import { getAUser } from '@/api/userServices';
 
 const PetDetailsPage = async ({params}) => {
     const {token} = await auth.api.getToken({
@@ -13,6 +14,8 @@ const PetDetailsPage = async ({params}) => {
     
     const {id} = await params;
     const pet = await getASinglePet(id, token);
+
+    const owner = await getAUser(pet.ownderId)
 
     const session = await auth.api.getSession({
         headers: await headers()
@@ -29,7 +32,7 @@ const PetDetailsPage = async ({params}) => {
                 if user's pet -> show an warning
             */}
             {
-                userIsTheOwner ? <PetOwnerAlert /> : <BookAPet pet={pet} />
+                userIsTheOwner ? <PetOwnerAlert /> : <BookAPet owner={owner} pet={pet} />
             }
         </div>
     );
