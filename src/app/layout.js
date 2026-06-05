@@ -12,7 +12,7 @@ const marcellus = Marcellus({
 })
 
 export const metadata = {
-  title: "Pawsoem - Pet Adoption",
+  title: "Pawsome - Pet Adoption",
 };
 
 export default function RootLayout({ children }) {

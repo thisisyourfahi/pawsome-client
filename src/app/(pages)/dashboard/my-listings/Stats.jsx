@@ -7,8 +7,11 @@ const Stats = async () => {
     const session = await auth.api.getSession({
         headers: await headers()
     })
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
     const user = session?.user;
-    const pets = await getAllPetsOfAuser(user.id)
+    const pets = await getAllPetsOfAuser(user.id, token)
     const available = await pets.filter(pet => pet.adoption === 'Available');
     console.log(available);
     return (

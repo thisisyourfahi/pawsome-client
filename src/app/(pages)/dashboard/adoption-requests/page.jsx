@@ -8,9 +8,12 @@ const AdoptionRequests = async () => {
     const session = await auth.api.getSession({
         headers: await headers()
     })
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
     const user = session?.user;
 
-    const receivedAdoptionRequests = await getAddoptionRequestOfYourListings(user?.id);
+    const receivedAdoptionRequests = await getAddoptionRequestOfYourListings(user?.id, token);
     return (
         <div className='bg-gray-200 p-4 min-h-screen rounded-sm'>
             {

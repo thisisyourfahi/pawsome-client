@@ -9,8 +9,11 @@ const MyRequests = async () => {
     const session = await auth.api.getSession({
         headers: await headers()
     })
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
     const user = session?.user;
-    const adoptions = await getAllRequestsOfAUser(user.id)
+    const adoptions = await getAllRequestsOfAUser(user.id, token)
 
     return (
         <div className='bg-gray-200 p-4 min-h-screen rounded-sm'>

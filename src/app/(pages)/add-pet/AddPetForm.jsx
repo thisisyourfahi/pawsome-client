@@ -6,7 +6,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 const AddPetForm = () => {
-    const {data, isPending} = authClient.useSession();
+    const { data, isPending } = authClient.useSession();
     const user = data?.user;
 
     const onSubmit = async (e) => {
@@ -16,7 +16,7 @@ const AddPetForm = () => {
         petInfo.ownderId = user?.id;
 
         // sending request to server
-        const response = await addPet(petInfo); 
+        const response = await addPet(petInfo);
         if (response.ok) {
             toast.success(`${petInfo.petName} has been added successfully`);
             e.target.reset()
@@ -26,7 +26,7 @@ const AddPetForm = () => {
     }
     return (
         <div className="space-y-4">
-            <h2 className="text-2xl font-bold">Add Destination</h2>
+            <h2 className="text-2xl font-bold">Add A Pet</h2>
             <Card className="max-w-7xl mx-auto rounded-sm">
                 <form onSubmit={onSubmit} className="space-y-8">
                     <TextField name='petName' isRequired>
@@ -146,8 +146,9 @@ const AddPetForm = () => {
                             Reset
                         </Button>
                         <Button
+                            variant='outline'
                             type="submit"
-                            className="rounded-sm w-full bg-[#810B38]"
+                            className="rounded-sm w-full border-[#810B38] text-[#810B38] hover:bg-linear-to-r hover:from-[#ff0062] hover:to-[#A8124A] hover:text-white transition-all duration-200"
                         >
                             Add Pet
                         </Button>

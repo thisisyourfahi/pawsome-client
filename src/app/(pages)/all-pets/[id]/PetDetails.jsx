@@ -40,7 +40,7 @@ const PetDetails = ({ pet }) => {
                     <p className=' py-1 px-4 border border-[#810B38] text-[#810B38] hover:bg-linear-to-r hover:from-[#ff0062] hover:to-[#A8124A] hover:text-white transition-all duration-200 rounded-sm'>Adoption Fee: <strong>{fee}$</strong></p>
                     <p className=' py-1 px-4 border border-[#810B38] text-[#810B38] hover:bg-linear-to-r hover:from-[#ff0062] hover:to-[#A8124A] hover:text-white transition-all duration-200 rounded-sm flex items-center gap-4'><MapPin /> <strong>{location}</strong></p>
                 </div>
-                <p className=' py-1 px-4 border border-[#810B38] text-[#810B38] hover:bg-linear-to-r hover:from-[#ff0062] hover:to-[#A8124A] hover:text-white transition-all duration-200 rounded-sm'>About The Dog: <br /> <strong>{description}</strong></p>
+                <p className=' py-1 px-4 border border-[#810B38] text-[#810B38] hover:bg-linear-to-r hover:from-[#ff0062] hover:to-[#A8124A] hover:text-white transition-all duration-200 rounded-sm'>Description: <br /> <strong>{description}</strong></p>
             </div>
 
             {/* vaccitination, fee, location, , description */}

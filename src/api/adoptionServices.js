@@ -44,15 +44,23 @@ export const rejectAdoptionRequest = async (adoptionId) => {
 }
 
 // get all adoption requests of a users list
-export const getAddoptionRequestOfYourListings = async (userId) => {
-    const data = await fetch(`${PUBLIC_URL}/dashboard/adoption-requests/${userId}`);
+export const getAddoptionRequestOfYourListings = async (userId, token) => {
+    const data = await fetch(`${PUBLIC_URL}/dashboard/adoption-requests/${userId}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
     const res = await data.json();
     return res;
 }
 
 // get all adoption request made by a user
-export const getAllRequestsOfAUser = async (userId) => {
-    const data = await fetch(`${PUBLIC_URL}/dashboard/my-requests/${userId}`)
+export const getAllRequestsOfAUser = async (userId, token) => {
+    const data = await fetch(`${PUBLIC_URL}/dashboard/my-requests/${userId}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
     const res = await data.json();
     return res;
 }

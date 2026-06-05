@@ -25,8 +25,12 @@ export const getAllPets = async () => {
     return res;
 }
 
-export const getAllPetsOfAuser = async (userId) => {
-    const data = await fetch(`${PUBLIC_URL}/dashboard/my-listings/${userId}`)
+export const getAllPetsOfAuser = async (userId, token) => {
+    const data = await fetch(`${PUBLIC_URL}/dashboard/my-listings/${userId}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
     const res = await data.json();
     return res;
 }
