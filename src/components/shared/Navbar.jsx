@@ -15,12 +15,12 @@ const Navbar = async () => {
     const user = session?.user;
 
     return (
-        <div className='flex justify-between px-20 py-2 border-b border-b-slate-300 mb-10'>
+        <div className='flex justify-between px-2 md:px-20 py-2 border-b border-b-slate-300 mb-10'>
             <Link href={'/'} className='flex items-center gap-1'>
                 <Image src={logo} width={30} height={30} alt='pawsome' className='rounded-full'></Image>
                 <h2 className='text-xl font-bold'>Pawsome</h2>
             </Link>
-            <div className='flex items-center md:gap-8'>
+            <div className='flex flex-col md:flex-row items-center md:gap-8'>
                 <Link href={'/'} className='flex items-center gap-1 hover:text-[#FF4081]'>
                     <House /> Home
                 </Link>

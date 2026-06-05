@@ -28,7 +28,7 @@ const PetDetailsPage = async ({ params }) => {
     const userIsTheOwner = pet.ownderId === user.id
 
     return (
-        <div className='flex md:flex-row md:gap-10 gap-4'>
+        <div className='flex flex-col md:flex-row md:gap-10 gap-4 px-4 md:px-0'>
             {/* pet details*/}
             <PetDetails pet={pet} />
 

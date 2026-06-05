@@ -14,7 +14,7 @@ const page = async () => {
         redirect('/login')
     }
     return (
-        <div>
+        <div className='px-4 md:px-0'>
             <p className='animate__animated animate__bounce text-2xl font-bold text-center'>Welcome {user?.name}</p>
 
             <Card className="animate__bounceInUp animate__animated border rounded-sm border-gray-200 mx-auto md:w-125 py-10 mt-5">

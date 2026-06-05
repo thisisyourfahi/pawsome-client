@@ -15,7 +15,7 @@ const Footer = () => {
                     <li><Link href={'/all-pets'}>Browse Pets</Link></li>
                 </ul>
             </div>
-            <div className='flex  items-center gap-4'>
+            <div className='flex flex-col md:flex-row items-center gap-4'>
                 <div className='flex items-center gap-1'>
                     <Image src={logo} width={40} height={40} alt='pawsome' className='rounded-full'></Image>
                     <h2 className='text-4xl font-bold'>Pawsome</h2>
@@ -26,7 +26,7 @@ const Footer = () => {
                     <p className='flex items-center gap-1'><Handset />+88 01712 079557</p>
                 </div>
             </div>
-            <p>Copyright © {new Date().getFullYear()} - All right reserved by Pawsome</p>
+            <p className='text-center'>Copyright © {new Date().getFullYear()} - All right reserved by Pawsome</p>
 
         </div>
     );

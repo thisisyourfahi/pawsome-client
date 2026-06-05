@@ -3,7 +3,7 @@ import AddPetForm from './AddPetForm';
 
 const AddPetPage = () => {
     return (
-        <div>
+        <div className='px-4 md:px-0'>
             <AddPetForm />
         </div>
     );

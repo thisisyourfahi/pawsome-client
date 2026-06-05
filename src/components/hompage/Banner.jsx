@@ -16,7 +16,7 @@ const Banner = () => {
                         <Link href={'/all-pets'}>
                             <Button className={'rounded-md bg-[#810B38]'}>Browse All Pets</Button>
                         </Link>
-                        <p className='font-bold text-xl'>Pawsome is a community driven platform, where you can adopt pets.</p>
+                        <p className='font-bold text-xl text-center'>Pawsome is a community driven platform, where you can adopt pets.</p>
                     </div>
                 </div>
             </div>
